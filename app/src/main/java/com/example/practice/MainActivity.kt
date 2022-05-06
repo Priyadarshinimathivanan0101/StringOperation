@@ -40,6 +40,24 @@ class MainActivity : AppCompatActivity() {
             startActivityForResult(intent,0)
         }
     }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString("RESULT_TEXT", result.text.toString())
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        result.setText(savedInstanceState?.getString("RESULT_TEXT"))
+        if(result.text != "") {
+            appendButton.visibility = View.GONE
+            reverseButton.visibility = View.GONE
+            splitButton.visibility = View.GONE
+            resultText.visibility = View.VISIBLE
+            result.visibility = View.VISIBLE
+        }
+
+    }
    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
        appendButton = findViewById<Button>(R.id.appendButton)
