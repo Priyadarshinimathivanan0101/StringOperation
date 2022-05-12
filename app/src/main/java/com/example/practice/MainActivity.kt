@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
         }
         optionButton.setOnClickListener {
             displayHome()
-            //result.text =""
+            result.text =""
         }
     }
 
