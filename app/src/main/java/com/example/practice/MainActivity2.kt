@@ -36,10 +36,20 @@ class MainActivity2 : AppCompatActivity() {
                     val chars: List<Char> = string1.text.toList()
                     sendToActivity1(chars.joinToString("  "))
                 }
+                "splitComma" -> {
+                    val chars: List<Char> = string1.text.toList()
+                    sendToActivity1(chars.joinToString(","))
+                }
             }
         }
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        MainActivity.mode = 2
+    }
     fun sendToActivity1(output: String) {
+        MainActivity.mode = 1
         var intent = Intent().putExtra("data", output.toString())
         setResult(0, intent)
         finish()
